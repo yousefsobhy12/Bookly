@@ -1,28 +1,17 @@
+import 'package:bookly/features/home/presentation/widgets/featured_slider_item.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedItemsSlider extends StatelessWidget {
-  const FeaturedItemsSlider({
-    super.key,
-  });
+  const FeaturedItemsSlider({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
       itemCount: 6,
-      itemBuilder:
-          (BuildContext context, int itemIndex, int pageViewIndex) {
-            return AspectRatio(
-              aspectRatio: 150 / 224,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/dummy_pic.png'),
-                  ),
-                ),
-              ),
-            );
-          },
+      itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
+        return FeaturedSliderItem();
+      },
       options: CarouselOptions(
         height: 300,
         viewportFraction: 0.4,
