@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 abstract class Styles {
   // Font size 14
   static const regular14 = TextStyle(fontSize: 14);
-  static const medium14 = TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+  static const medium14 = TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
 
   // Font size 16
   static const regular16 = TextStyle(fontSize: 16);
