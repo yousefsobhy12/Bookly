@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FeaturedSliderItem extends StatelessWidget {
-  const FeaturedSliderItem({super.key});
+class BookCoverWidget extends StatelessWidget {
+  const BookCoverWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

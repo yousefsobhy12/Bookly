@@ -1,4 +1,4 @@
-import 'package:bookly/features/home/presentation/widgets/featured_slider_item.dart';
+import 'package:bookly/features/home/presentation/widgets/book_cover_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class FeaturedItemsSlider extends StatelessWidget {
     return CarouselSlider.builder(
       itemCount: 6,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-        return FeaturedSliderItem();
+        return BookCoverWidget();
       },
       options: CarouselOptions(
         height: 300,
