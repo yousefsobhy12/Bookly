@@ -1,16 +1,38 @@
-# bookly
+# Bookly App 📚
 
-A new Flutter project.
+**Bookly** is a Flutter-based mobile application for browsing, reading, and purchasing books.  
+This project is currently under active development.
 
-## Getting Started
+## 🚧 Project Status
 
-This project is a starting point for a Flutter application.
+The app is still in progress. New features and improvements are being added regularly.
 
-A few resources to get you started if this is your first Flutter project:
+## 🧠 Architecture & Technologies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **MVVM** pattern for clean and scalable code structure.
+- **Bloc** for effective and reactive state management.
+- **Firebase** (planned) for:
+  - User authentication
+  - Storing user-related data like wishlist, preferences, etc.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🔮 Planned Features
+
+- Browse books by categories
+- View book details: cover, title, author, rating, and more
+- Add books to a **Wishlist**
+- Firebase authentication (sign in / sign up)
+- Personalized book suggestions
+- In-app reading functionality
+
+## 📁 Current Project Structure
+
+```bash
+lib/
+├── core/
+│   ├── utils/        # Reusable styles, constants, etc.
+│   └── widgets/      # Reusable shared widgets
+├── features/
+│   ├── home/         # Home screen UI and logic
+│   └── search/       # Search feature (in progress)
+├── constants.dart    # Global constants
+└── main.dart         # App entry point
