@@ -14,10 +14,7 @@ abstract class AppRouter {
         path: kBookDetailsScreen,
         builder: (context, state) => BookDetailsScreen(),
       ),
-      GoRoute(
-        path: kSearchScreen,
-        builder: (context, state) => SearchScreen(),
-      ),
+      GoRoute(path: kSearchScreen, builder: (context, state) => SearchScreen()),
     ],
   );
 }
