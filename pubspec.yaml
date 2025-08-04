@@ -35,6 +35,7 @@ dependencies:
   equatable: ^2.0.7
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   flutter_native_splash: ^2.4.6
   flutter_svg: ^2.2.0
   get: ^4.7.2
