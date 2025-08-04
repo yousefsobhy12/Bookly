@@ -1,4 +1,4 @@
-import 'package:bookly/features/home/presentation/widgets/book_cover_widget.dart';
+import 'package:bookly/features/home/presentation/screens/widgets/book_cover_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
