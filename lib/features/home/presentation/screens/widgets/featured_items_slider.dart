@@ -4,6 +4,7 @@ import 'package:bookly/features/home/presentation/screens/widgets/book_cover_wid
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class FeaturedItemsSlider extends StatelessWidget {
   const FeaturedItemsSlider({super.key});
@@ -22,7 +23,16 @@ class FeaturedItemsSlider extends StatelessWidget {
             options: carouselOptions,
           );
         } else if (state is FeaturedBooksLoading) {
-          return Center(child: CircularProgressIndicator());
+          return Skeletonizer(
+            child: CarouselSlider.builder(
+              itemCount: 6,
+              itemBuilder:
+                  (BuildContext context, int itemIndex, int pageViewIndex) {
+                    return BookCoverWidget();
+                  },
+              options: carouselOptions,
+            ),
+          );
         } else if (state is FeaturedBooksFailure) {
           return Center(child: Text(state.message));
         } else {
