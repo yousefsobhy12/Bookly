@@ -1,31 +1,34 @@
+import 'package:bookly/constants.dart';
+import 'package:bookly/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/book_cover_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FeaturedItemsSlider extends StatelessWidget {
   const FeaturedItemsSlider({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider.builder(
-      itemCount: 6,
-      itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-        return BookCoverWidget();
+    return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
+      builder: (context, state) {
+        if (state is FeaturedBooksSuccess) {
+          return CarouselSlider.builder(
+            itemCount: 6,
+            itemBuilder:
+                (BuildContext context, int itemIndex, int pageViewIndex) {
+                  return BookCoverWidget();
+                },
+            options: carouselOptions,
+          );
+        } else if (state is FeaturedBooksLoading) {
+          return Center(child: CircularProgressIndicator());
+        } else if (state is FeaturedBooksFailure) {
+          return Center(child: Text(state.message));
+        } else {
+          return Center(child: Text('Unexpected error'));
+        }
       },
-      options: CarouselOptions(
-        height: 300,
-        viewportFraction: 0.4,
-        initialPage: 0,
-        enableInfiniteScroll: false,
-        reverse: false,
-        autoPlay: false,
-        autoPlayInterval: Duration(seconds: 3),
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enlargeCenterPage: true,
-        enlargeFactor: 0.3,
-        scrollDirection: Axis.horizontal,
-      ),
     );
   }
 }
