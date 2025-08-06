@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 const kPrimaryColor = Color(0xff100B20);
 const kSecondaryColor = Color(0xffEF8262);
 var carouselOptions = CarouselOptions(
-  height: 300,
-  viewportFraction: 0.4,
+  height: 250, // Adjust based on your design
+ viewportFraction: 0.4,
   initialPage: 0,
   enableInfiniteScroll: false,
   reverse: false,

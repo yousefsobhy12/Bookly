@@ -15,10 +15,13 @@ class FeaturedItemsSlider extends StatelessWidget {
       builder: (context, state) {
         if (state is FeaturedBooksSuccess) {
           return CarouselSlider.builder(
-            itemCount: 6,
+            itemCount: state.books.length,
             itemBuilder:
                 (BuildContext context, int itemIndex, int pageViewIndex) {
-                  return BookCoverWidget();
+                  return BookCoverWidget(
+                    imageUrl:
+                        state.books[itemIndex].volumeInfo.imageLinks.thumbnail,
+                  );
                 },
             options: carouselOptions,
           );
@@ -28,7 +31,10 @@ class FeaturedItemsSlider extends StatelessWidget {
               itemCount: 6,
               itemBuilder:
                   (BuildContext context, int itemIndex, int pageViewIndex) {
-                    return BookCoverWidget();
+                    return BookCoverWidget(
+                      imageUrl:
+                          'http://books.google.com/books/content?id=SkJozQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+                    );
                   },
               options: carouselOptions,
             ),

@@ -18,7 +18,9 @@ class HomeScreenBody extends StatelessWidget {
               children: [
                 SizedBox(height: 12),
                 CustomAppBar(),
+                SizedBox(height: 40),
                 FeaturedItemsSlider(),
+                SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Text('Best Seller', style: Styles.semiBold18),

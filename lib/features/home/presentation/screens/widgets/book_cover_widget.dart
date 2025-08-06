@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 class BookCoverWidget extends StatelessWidget {
-  const BookCoverWidget({super.key});
-
+  const BookCoverWidget({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 150 / 224,
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/dummy_pic.png'),
-          ),
+    return Container(
+      width: 150,
+      margin: const EdgeInsets.symmetric(horizontal: 6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+          image: NetworkImage(imageUrl), // or NetworkImage
+          fit: BoxFit.fill,
         ),
       ),
     );
