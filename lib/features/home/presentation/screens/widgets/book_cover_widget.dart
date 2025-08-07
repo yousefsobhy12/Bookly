@@ -1,3 +1,6 @@
+import 'package:bookly/features/home/presentation/screens/widgets/image_error_widget.dart';
+import 'package:bookly/features/home/presentation/screens/widgets/image_loading_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class BookCoverWidget extends StatelessWidget {
@@ -5,15 +8,17 @@ class BookCoverWidget extends StatelessWidget {
   final String imageUrl;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 150,
-      margin: const EdgeInsets.symmetric(horizontal: 6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
-          image: NetworkImage(imageUrl), // or NetworkImage
-          fit: BoxFit.fill,
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadiusGeometry.circular(20),
+      child: CachedNetworkImage(
+        imageUrl: imageUrl,
+        fit: BoxFit.fill,
+        progressIndicatorBuilder: (context, url, progress) {
+          return ImageLoadingWidget();
+        },
+        errorWidget: (context, url, error) {
+          return ImageErrorWidget();
+        },
       ),
     );
   }
