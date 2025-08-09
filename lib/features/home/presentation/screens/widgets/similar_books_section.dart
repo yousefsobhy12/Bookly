@@ -23,9 +23,12 @@ class SimilarBooksSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) {
-              return BookCoverWidget(
-                imageUrl:
-                    'http://books.google.com/books/content?id=SkJozQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+              return AspectRatio(
+                aspectRatio: 70 / 112,
+                child: BookCoverWidget(
+                  imageUrl:
+                      'http://books.google.com/books/content?id=SkJozQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+                ),
               );
             },
             separatorBuilder: (BuildContext context, int index) {
