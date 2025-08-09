@@ -45,4 +45,24 @@ class HomeRepoImplementation implements HomeRepo {
       return left(ServerFailure('An unexpected error occurred: $error'));
     }
   }
+
+  @override
+  Future<Either<Failures, List<BookModel>>> fetchSimilarBooks({
+    required String category,
+  }) async {
+    try {
+      var data = await appService.get(
+        endPoint: 'volumes?Sorting=relevance&q=computer science',
+      );
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } on DioException catch (error) {
+      return left(ServerFailure.fromDioError(error));
+    } catch (error) {
+      return left(ServerFailure('An unexpected error occurred: $error'));
+    }
+  }
 }

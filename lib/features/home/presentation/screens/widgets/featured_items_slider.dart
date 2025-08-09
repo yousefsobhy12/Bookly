@@ -1,10 +1,12 @@
 import 'package:bookly/constants.dart';
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/book_cover_widget.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/failure_state_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class FeaturedItemsSlider extends StatelessWidget {
@@ -20,6 +22,11 @@ class FeaturedItemsSlider extends StatelessWidget {
             itemBuilder:
                 (BuildContext context, int itemIndex, int pageViewIndex) {
                   return BookCoverWidget(
+                    onTap: () {
+                      GoRouter.of(
+                        context,
+                      ).push(AppRouter.kBookDetailsScreen, extra: state.books[itemIndex]);
+                    },
                     imageUrl:
                         state.books[itemIndex].volumeInfo.imageLinks.thumbnail,
                   );
@@ -41,7 +48,7 @@ class FeaturedItemsSlider extends StatelessWidget {
             ),
           );
         } else if (state is FeaturedBooksFailure) {
-          return FailureStateWidget(message: state.message,);
+          return FailureStateWidget(message: state.message);
         } else {
           return Center(child: Text('Unexpected error'));
         }

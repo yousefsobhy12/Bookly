@@ -1,4 +1,5 @@
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/model/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/book_actions.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/book_cover_widget.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/book_rating_widget.dart';
@@ -6,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
-
+  const BookDetailsSection({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     var deviceWidth = MediaQuery.sizeOf(context).width;
@@ -18,21 +19,22 @@ class BookDetailsSection extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 162 / 243,
             child: BookCoverWidget(
-              imageUrl:
-                  'http://books.google.com/books/content?id=SkJozQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+              imageUrl: book.volumeInfo.imageLinks.thumbnail,
             ),
           ),
         ),
         SizedBox(height: 42),
         Text(
-          'The Jungle Book',
+          book.volumeInfo.title!,
+          textAlign: TextAlign.center,
           style: GoogleFonts.instrumentSerif(
             fontSize: 30,
             fontWeight: FontWeight.w600,
           ),
         ),
         Text(
-          'Rudyard Kipling',
+          textAlign: TextAlign.center,
+          book.volumeInfo.authors![0],
           style: Styles.regular18.copyWith(
             fontStyle: FontStyle.italic,
             color: Color(0xffB7B6BC),

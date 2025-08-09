@@ -3,22 +3,27 @@ import 'package:bookly/features/home/presentation/screens/widgets/image_loading_
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class BookCoverWidget extends StatelessWidget {
-  const BookCoverWidget({super.key, required this.imageUrl});
+  BookCoverWidget({super.key, required this.imageUrl, this.onTap});
   final String imageUrl;
+  void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadiusGeometry.circular(16),
-      child: CachedNetworkImage(
-        imageUrl: imageUrl,
-        fit: BoxFit.fill,
-        progressIndicatorBuilder: (context, url, progress) {
-          return ImageLoadingWidget();
-        },
-        errorWidget: (context, url, error) {
-          return ImageErrorWidget();
-        },
+    return GestureDetector(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadiusGeometry.circular(16),
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.fill,
+          progressIndicatorBuilder: (context, url, progress) {
+            return ImageLoadingWidget();
+          },
+          errorWidget: (context, url, error) {
+            return ImageErrorWidget();
+          },
+        ),
       ),
     );
   }
