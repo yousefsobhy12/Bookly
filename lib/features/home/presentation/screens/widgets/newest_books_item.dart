@@ -1,6 +1,7 @@
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/data/model/book_model/book_model.dart';
+import 'package:bookly/features/home/presentation/screens/widgets/book_cover_widget.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/book_rating_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,15 +18,11 @@ class NewestBooksItem extends StatelessWidget {
       },
       child: Row(
         children: [
-          Container(
+          SizedBox(
             height: 105,
             width: 70,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(book.volumeInfo.imageLinks.thumbnail),
-              ),
+            child: BookCoverWidget(
+              imageUrl: book.volumeInfo.imageLinks.thumbnail,
             ),
           ),
           SizedBox(width: 30),

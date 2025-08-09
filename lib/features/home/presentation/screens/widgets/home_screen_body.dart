@@ -23,7 +23,7 @@ class HomeScreenBody extends StatelessWidget {
                 SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Text('Best Seller', style: Styles.semiBold18),
+                  child: Text('Newest Books', style: Styles.semiBold18),
                 ),
               ],
             ),

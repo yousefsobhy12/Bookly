@@ -9,7 +9,7 @@ class BookCoverWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadiusGeometry.circular(20),
+      borderRadius: BorderRadiusGeometry.circular(16),
       child: CachedNetworkImage(
         imageUrl: imageUrl,
         fit: BoxFit.fill,
