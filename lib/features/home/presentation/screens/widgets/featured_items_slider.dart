@@ -1,6 +1,7 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/screens/widgets/book_cover_widget.dart';
+import 'package:bookly/features/home/presentation/screens/widgets/failure_state_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,7 @@ class FeaturedItemsSlider extends StatelessWidget {
             ),
           );
         } else if (state is FeaturedBooksFailure) {
-          return Center(child: Text(state.message));
+          return FailureStateWidget(message: state.message,);
         } else {
           return Center(child: Text('Unexpected error'));
         }
